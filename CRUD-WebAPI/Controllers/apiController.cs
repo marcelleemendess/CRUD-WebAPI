@@ -9,7 +9,7 @@ namespace CRUD_WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class apiController : ControllerBas
+    public class apiController : ControllerBase
     {
         //to have access from everywhere
         private static List<SuperHero> heroes = new List<SuperHero>
@@ -22,6 +22,7 @@ namespace CRUD_WebAPI.Controllers
                         Place="New York"
                 }
             };
+
         [HttpGet]
         public async Task<ActionResult<List<SuperHero>>> Get()
         {
@@ -30,5 +31,12 @@ namespace CRUD_WebAPI.Controllers
 
         }
 
+        [HttpPost]
+        public async Task<ActionResult<List<SuperHero>>> AddHeoro(SuperHero hero)
+        {
+            heroes.Add(hero);
+            return Ok(heroes);
+
+        }
     }
 }
